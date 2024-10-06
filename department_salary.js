@@ -111,5 +111,22 @@ function calculateEmployeeSalary(employee) {
     return totalSalary
 }
 
-const salesTotalSalary = calculateDepartmentSalary(company.departments[0])
-console.log(`Total salary for the Sales department: $${salesTotalSalary}`)
+for (let department of company.departments) {
+    const departmentTotalSalary = calculateDepartmentSalary(department)
+    console.log(`Total Salary for the ${department.departmentName} department: $${departmentTotalSalary}`)
+}
+
+// Task 3: Create a Function to Calculate the Total Salary for All Departments
+
+function calculateCompanySalary(company) {
+    let totalSalary = 0
+    
+    for (let department of company.departments) {
+        totalSalary += calculateDepartmentSalary(department)
+    }
+
+    return totalSalary
+}
+
+const totalCompanySalary = calculateCompanySalary(company)
+console.log(`Total Salary for the entire company: $${totalCompanySalary}`)
